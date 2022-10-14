@@ -1,6 +1,5 @@
 from django.db import models
 
-
 class Women(models.Model):
 	title = models.CharField(max_length=255)
 	content = models.TextField(blank= True)
@@ -16,7 +15,6 @@ class Women(models.Model):
 	class Meta:
 		verbose_name = 'Женщина'
 		verbose_name_plural = 'Женщины'
-
 
 class Category(models.Model):
 	title = models.CharField(max_length= 255, db_index= True)
