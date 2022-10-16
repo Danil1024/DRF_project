@@ -2,7 +2,13 @@ from rest_framework import serializers
 from .models import Women
 
 
-class WomenSerializer(serializers.Serializer):
+class WomenSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = Women
+		fields = ('title', 'content', 'time_create', 'time_update', 'cat')
+
+
+'''class WomenSerializer(serializers.Serializer):
 	title = serializers.CharField(max_length=255)
 	content = serializers.CharField()
 	time_create = serializers.DateTimeField(read_only=True)
@@ -20,13 +26,8 @@ class WomenSerializer(serializers.Serializer):
 		instance.is_published = validated_data.get('is_published', instance.is_published)
 		instance.cat_id = validated_data.get('cat_id', instance.cat_id)
 		instance.save()
-		return instance
+		return instance'''
 
-
-"""class WomenSerializer(serializers.ModelSerializer): Для авто полей модели сразу ставиться read_only=True
-	class Meta:
-		model = Women
-		fields = ('title', 'content', 'time_create', 'time_update', 'is_published', 'cat_id')"""
 
 ''''{    
     "title": "Danil",
