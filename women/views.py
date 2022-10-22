@@ -3,24 +3,35 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.forms import model_to_dict
 from .models import Women
-from .serializers import WomenSerializer
+from .serializers import WomenSerializer#, UserSerializer
+#from django.contrib.auth.models import User
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
+from .permissions import IsAdminOrReadOnly, IsOwnerOrReadOnly
 
 
-class WomenViewSet(viewsets.ModelViewSet):
-	queryset = Women.objects.all()
-	serializer_class = WomenSerializer
+"""class UserCreateAPIView(generics.CreateAPIView):
+	queryset = User.objects.all()
+	serializer_class = UserSerializer"""
 
 
-"""
 class WomenListAPIView(generics.ListCreateAPIView):
 	queryset = Women.objects.all()
 	serializer_class = WomenSerializer
+	permission_classes = (IsAuthenticatedOrReadOnly,)
 
 
-class WomenAPIDetailView(generics.RetrieveUpdateDestroyAPIView):
+class WomenRetrieveUpdateAPIView(generics.RetrieveUpdateAPIView):
 	queryset = Women.objects.all()
 	serializer_class = WomenSerializer
-"""
+	permission_classes = (IsOwnerOrReadOnly,)
+
+
+class WomenRetrieveDestroyAPIView(generics.RetrieveDestroyAPIView):
+	queryset = Women.objects.all()
+	serializer_class = WomenSerializer
+	permission_classes = (IsAdminOrReadOnly,)
+
+
 
 
 """
