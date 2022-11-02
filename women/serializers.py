@@ -5,10 +5,10 @@ from django.contrib.auth.models import User
 
 
 class WomenSerializer(serializers.ModelSerializer):
-	user = serializers.HiddenField(default=serializers.CurrentUserDefault())
-	class Meta:
-		model = Women
-		fields = ('id', 'title', 'content', 'time_create', 'time_update', 'cat', 'user')
+    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
+    class Meta:
+        model = Women
+        fields = ('id', 'title', 'content', 'time_create', 'time_update', 'cat', 'user')
 
 
 '''class UserSerializer(serializers.ModelSerializer):
