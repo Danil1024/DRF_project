@@ -9,8 +9,8 @@ from .filters import IsOwnerOrAdminFilterBackend
 class WomenListAPIView(generics.ListCreateAPIView):
 	queryset = Women.objects.all()
 	serializer_class = WomenSerializer
-	permission_classes = (IsAuthenticated,)
-	filter_backends = [IsOwnerOrAdminFilterBackend,]
+	#permission_classes = (IsAuthenticated,)
+	#filter_backends = [IsOwnerOrAdminFilterBackend,]
 
 
 class WomenRetrieveUpdateAPIView(generics.RetrieveUpdateAPIView):

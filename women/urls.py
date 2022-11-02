@@ -4,7 +4,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 
 urlpatterns = [
-	path('api/v1/women/', WomenListAPIView.as_view()),
+	path('api/v1/women/', WomenListAPIView.as_view(), name='women_list'),
 	path('api/v1/women/delete/<int:pk>/', WomenRetrieveDestroyAPIView.as_view()),
 	path('api/v1/women/<int:pk>/', WomenRetrieveUpdateAPIView.as_view()),
 	path('api/v1/auth/', include('djoser.urls')),
