@@ -2,15 +2,15 @@ from rest_framework import generics
 from .models import Women
 from .serializers import WomenSerializer
 from rest_framework.permissions import IsAuthenticated
-from .permissions import IsAdminOrReadOnly, IsOwnerOrReadOnly
+from .permissions import IsAdminOrReadOnly, IsOwnerOrAdminOrReadOnly, IsOwnerOrReadOnly
 from .filters import IsOwnerOrAdminFilterBackend
 
 
 class WomenListAPIView(generics.ListCreateAPIView):
 	queryset = Women.objects.all()
 	serializer_class = WomenSerializer
-	#permission_classes = (IsAuthenticated,)
-	#filter_backends = [IsOwnerOrAdminFilterBackend,]
+	permission_classes = (IsAuthenticated,)
+	filter_backends = [IsOwnerOrAdminFilterBackend,]
 
 
 class WomenRetrieveUpdateAPIView(generics.RetrieveUpdateAPIView):
@@ -22,4 +22,4 @@ class WomenRetrieveUpdateAPIView(generics.RetrieveUpdateAPIView):
 class WomenRetrieveDestroyAPIView(generics.RetrieveDestroyAPIView):
 	queryset = Women.objects.all()
 	serializer_class = WomenSerializer
-	permission_classes = (IsAdminOrReadOnly,)
+	permission_classes = (IsOwnerOrAdminOrReadOnly,)
